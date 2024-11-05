@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import { config } from 'dotenv';
 
 config();
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -14,7 +15,7 @@ config();
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testMatch: /.*\.spec\.ts$/,
+  testMatch: '**/*.spec.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,10 +30,12 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
     video: {
       mode: 'on',
+      size: { width: 640, height: 480 }
     }
   },
 
@@ -42,6 +45,16 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+
+    /* {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    }, */
 
     /* Test against mobile viewports. */
     // {

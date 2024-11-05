@@ -13,6 +13,7 @@ test('Register', async ({ page }) => {
 
     await test.step('Submit the form', async () => {
         await page.getByRole('button', { name: 'Continue' , exact: true}).click();
+        await test.expect(page.locator('//input[@type="password"]').isVisible()).toBeTruthy();
     });
 });
 

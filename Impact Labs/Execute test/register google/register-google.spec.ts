@@ -1,9 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-
 test.describe('Register with Google', () => {
     const email = 'hungvp@hblab.vn';
-    const emailPassword = 'Hung@1995';
+    const emailPassword = 'Hung1995@';
 
     test('Register', async ({ page }) => {
         await test.step('Go to sign up page', async () => {
@@ -32,4 +31,4 @@ test.describe('Register with Google', () => {
             await page.getByRole('button', { name: 'Continue', exact: true }).click();
         });
     });
-})
+}); 
